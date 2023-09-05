@@ -1,6 +1,6 @@
 export default {
   operational: {
-    message: "All Systems Operational",
+    message: "All Integrations Operational",
     backgroundColour: "#3da751",
   },
   issues: {

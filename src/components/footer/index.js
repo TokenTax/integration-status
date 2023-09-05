@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const Footer = styled.div`
+const FooterComp = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 16px;
@@ -18,17 +18,16 @@ const Branding = styled.a`
     opacity: 0.9;
   }
 `;
-
-export default () => (
-  <Footer>
+const Footer = () => (
+  <FooterComp>
     <div></div>
     <Branding
       visible={process.env.REACT_APP_BRANDING !== "false"}
-      href="https://github.com/tadhglewis/issue-status"
+      href="https://github.com/tokentax/integration-status"
       rel="noopener"
       target="_blank"
-    >
-      Powered by Issue Status
-    </Branding>
-  </Footer>
+    ></Branding>
+  </FooterComp>
 );
+
+export default Footer;

@@ -1,4 +1,4 @@
-export default {
+const statuses = {
   operational: {
     name: "Operational",
     colour: "#247234",
@@ -25,3 +25,5 @@ export default {
     backgroundColour: "rgba(177, 177, 177, 0.1)",
   },
 };
+
+export default statuses;

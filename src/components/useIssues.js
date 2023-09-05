@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default (label) => {
+const useIssue = (label) => {
   const [results, setResults] = useState([]);
   const [error, setError] = useState();
   const [loading, setLoading] = useState(true);
@@ -30,7 +30,7 @@ export default (label) => {
 const fetchData = (setLoading, setError, setResults, label) => {
   setLoading(true);
   fetch(
-    `https://api.github.com/repos/${process.env.REACT_APP_REPOSITORY}/issues?state=all&labels=issue status,${label}`
+    `https://api.github.com/repos/tokentax/integration-status/issues?state=all&labels=issue status,${label}`
   )
     .then((response) => {
       return response.json();
@@ -49,3 +49,5 @@ const fetchData = (setLoading, setError, setResults, label) => {
       setLoading(false);
     });
 };
+
+export default useIssue;

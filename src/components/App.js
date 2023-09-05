@@ -5,7 +5,7 @@ import Status from "./status";
 import useIssues from "./useIssues";
 import Header from "./header";
 import Components from "./components";
-import Incidents from "./incidents";
+// import Incidents from "./incidents";
 import Footer from "./footer";
 
 const Container = styled.div`
@@ -21,7 +21,7 @@ const ComponentsContainer = styled.div`
   padding: 16px;
 `;
 
-export default () => {
+const App = () => {
   // loading, errors, results, refetch
   const [
     componentsLoading,
@@ -29,12 +29,8 @@ export default () => {
     componentsResults,
     componentsRefetch,
   ] = useIssues("component");
-  const [
-    incidentsLoading,
-    incidentsError,
-    incidentsResults,
-    incidentsRefetch,
-  ] = useIssues("incident");
+  const [incidentsLoading, incidentsError, incidentsResults, incidentsRefetch] =
+    useIssues("incident");
 
   return (
     <Container>
@@ -57,8 +53,10 @@ export default () => {
           components={componentsResults}
         />
       </ComponentsContainer>
-      <Incidents loading={incidentsLoading} incidents={incidentsResults} />
+      {/* <Incidents loading={incidentsLoading} incidents={incidentsResults} /> */}
       <Footer />
     </Container>
   );
 };
+
+export default App;

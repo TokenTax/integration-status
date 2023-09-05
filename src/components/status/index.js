@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import useStatus from "./useStatus";
+import { useStatus, getComponentLabelPercent } from "./useStatus";
 import useRefetch from "./useRefetch";
 
 const StatusBar = styled.div`
@@ -38,7 +38,6 @@ const Code = styled.code`
   display: block;
 `;
 
-// TODO: change all systems status based on current status of all components
 export default ({ loading, error, components, refetch }) => {
   const [status] = useStatus(components);
   const [timeAgo] = useRefetch(refetch, loading);
@@ -57,7 +56,13 @@ export default ({ loading, error, components, refetch }) => {
       )}
       <StatusBar backgroundColour={status?.backgroundColour}>
         <Status>{status?.message}</Status>
-        <Reload onClick={refetch}>{loading ? "reloading" : timeAgo}</Reload>
+        <p>
+          {Math.round(getComponentLabelPercent(components, "operational"))}%
+          Operational
+        </p>
+        <Reload onClick={refetch}>
+          {loading ? "reloading" : "Updated" + " " + timeAgo}
+        </Reload>
       </StatusBar>
     </>
   );
