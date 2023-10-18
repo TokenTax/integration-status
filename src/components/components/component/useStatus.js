@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import statuses from "./statuses";
+import statuses from "./statuses.js";
 
 const useStatus = (labels) => {
   const [status, setStatus] = useState();

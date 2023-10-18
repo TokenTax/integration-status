@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import useStatus from "./useStatus";
+import useStatus from "./useStatus.js";
 
 const StatusComp = styled.div`
   color: ${(props) => props.colour};

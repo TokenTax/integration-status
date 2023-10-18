@@ -1,7 +1,7 @@
 import React from "react";
-import Skeleton from "./skeleton";
-import Component from "./component";
-import useDidMount from "../useDidMount";
+import Skeleton from "./skeleton.js";
+import Component from "./component/index.js";
+import useDidMount from "../useDidMount.js";
 
 const ComponentList = ({ loading, components }) => {
   const [hasMounted] = useDidMount();
@@ -9,7 +9,11 @@ const ComponentList = ({ loading, components }) => {
   return !loading || hasMounted ? (
     components?.length > 0 ? (
       components?.map((component) => (
-        <Component key={component.id} component={component} />
+        <Component
+          className="bg-blue-500"
+          key={component.id}
+          component={component}
+        />
       ))
     ) : (
       <p>No Components found.</p>

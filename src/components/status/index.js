@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { useStatus, getComponentLabelPercent } from "./useStatus";
-import useRefetch from "./useRefetch";
+import { useStatus, getComponentLabelPercent } from "./useStatus.js";
+import useRefetch from "./useRefetch.js";
 
 const StatusBar = styled.div`
   background-color: ${(props) =>

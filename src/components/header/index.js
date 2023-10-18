@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import logo from "../../img/tt-logo1.png";
+import { Button } from "@tremor/react";
+import getMyIssues from "../../api/linear.ts";
 
 const Title = styled.h1`
   text-align: center;
@@ -15,12 +17,13 @@ const HeaderComp = styled.div`
   margin-bottom: 16px;
 `;
 
-const Header = () =>
-  process.env.REACT_APP_LOGO || process.env.REACT_APP_NAME ? (
+const Header = () => {
+  return process.env.REACT_APP_LOGO || process.env.REACT_APP_NAME ? (
     <HeaderComp>
-      <Logo src={logo} height="50" />
-      <Title style={{ color: "white" }}>Integration Status</Title>
+      <Logo src={logo} className="center mx-auto w-1/12" />
+      <Title className="text-3xl text-white pt-3">Integration Status</Title>
     </HeaderComp>
   ) : null;
+};
 
 export default Header;
