@@ -1,4 +1,4 @@
-import { LinearClient, LinearFetch, User } from "@linear/sdk";
+import { LinearClient } from "@linear/sdk";
 const apiKey = process.env.REACT_APP_LINEAR_API_KEY;
 
 const linearClient = new LinearClient({ apiKey });
