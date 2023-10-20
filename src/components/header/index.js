@@ -16,12 +16,12 @@ const HeaderComp = styled.div`
 `;
 
 const Header = () => {
-  return process.env.REACT_APP_LOGO || process.env.REACT_APP_NAME ? (
+  return (
     <HeaderComp>
       <Logo src={logo} className="center mx-auto w-1/12" />
       <Title className="text-3xl text-white pt-3">Integration Status</Title>
     </HeaderComp>
-  ) : null;
+  );
 };
 
 export default Header;
