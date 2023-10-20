@@ -16,16 +16,13 @@ const Component = styled.div`
 `;
 
 const Components = ({ component }) => {
-  const [issues, setIssues] = useState([]);
   const [filteredIssues, setFilteredIssues] = useState([]);
   const [show, setShow] = useState(false);
 
   useEffect(() => {
     async function fetchIssues() {
       const issues = await getMyIssues();
-      setIssues(issues);
 
-      // Filter issues based on component.title and priority
       const filteredIssues = issues.filter((issue) => {
         const lowercaseIssueTitle = issue.title.toLowerCase();
         const lowercaseComponentTitle = component.title.toLowerCase();
@@ -37,7 +34,7 @@ const Components = ({ component }) => {
     }
 
     fetchIssues();
-  }, []);
+  }, [component.title]);
 
   return (
     <Component>
