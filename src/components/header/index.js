@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import logo from "../../img/tt-logo1.png";
-import { Button } from "@tremor/react";
-import getMyIssues from "../../api/linear.ts";
 
 const Title = styled.h1`
   text-align: center;

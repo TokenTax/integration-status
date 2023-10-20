@@ -29,7 +29,7 @@ const App = () => {
     componentsResults,
     componentsRefetch,
   ] = useIssues("component");
-  const [incidentsLoading, incidentsError, incidentsResults, incidentsRefetch] =
+  const [incidentsLoading, incidentsError, incidentsRefetch] =
     useIssues("incident");
 
   return (
