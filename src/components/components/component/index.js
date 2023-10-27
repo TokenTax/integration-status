@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Status from "./status.js";
-import getMyIssues from "../../../api/linear.ts";
 
 const Component = styled.div`
   background-color: #f7f8f9;
@@ -21,16 +20,30 @@ const Components = ({ component }) => {
 
   useEffect(() => {
     async function fetchIssues() {
-      const issues = await getMyIssues();
+      try {
+        const response = await fetch("/.netlify/functions/script");
 
-      const filteredIssues = issues.filter((issue) => {
-        const lowercaseIssueTitle = issue.title.toLowerCase();
-        const lowercaseComponentTitle = component.title.toLowerCase();
+        if (response.ok) {
+          const data = await response.json(); // Parse the JSON response
 
-        return lowercaseIssueTitle.includes(lowercaseComponentTitle);
-      });
+          if (Array.isArray(data.issues)) {
+            // Check if the response contains an array of issues
+            const filteredIssues = data.issues.filter((issue) => {
+              const lowercaseIssueTitle = issue.title.toLowerCase();
+              const lowercaseComponentTitle = component.title.toLowerCase();
+              return lowercaseIssueTitle.includes(lowercaseComponentTitle);
+            });
 
-      setFilteredIssues(filteredIssues);
+            setFilteredIssues(filteredIssues);
+          } else {
+            console.log("No issues array in the response.");
+          }
+        } else {
+          console.log("Server response was not ok.");
+        }
+      } catch (error) {
+        console.error("Error fetching and processing data: " + error.message);
+      }
     }
 
     fetchIssues();
